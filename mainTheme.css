@@ -1,0 +1,168 @@
+body{
+    padding-top: 80px;
+}
+header{
+    height: 80px;
+    background: linear-gradient(90deg, rgba(253,247,235,1) 0%, rgba(247,210,136,1) 50%, rgba(253,247,235,1) 100%);
+    padding: 0px 40px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+.contenderorCabecera{
+    height: 600px;
+    background-color:#ffebc3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+.contenderorCabecera img{
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    z-index: 2;
+    opacity: .7;
+    position: absolute;
+}    
+.contenderorCabecera  h1{
+    max-width: 600px;
+    text-align: center;
+    color: #000;
+    z-index: 3;
+}
+.videoSection{
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    background-color: rgb(238, 159, 238);
+}
+.videoSection video{
+    position: absolute;
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    opacity: .7;
+    z-index: 2;
+}
+.videoSection h2{
+    max-width: 600px;
+    text-align: center;
+    color: #000;
+    z-index: 3;
+}
+
+
+
+.ContenedorLogoHeader{
+    align-self: center;
+}
+.ContenedorLogoHeader a{
+    width: 20px;
+    height: 20px;
+    margin: 0 20px;
+    color: #666;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+}
+.ContenedorLogoHeader a:hover{
+    color: #000;
+}
+.ContenedorButton{
+    align-self:center ;
+}
+.ContenedorButton button{
+    width: 150px;
+    height: 35px;
+    border-radius: 7px;
+    background-color:#ffcb33;
+    font-size: 18px;
+    border: none;
+    transition: box-shadow .5s;
+    color: #333;
+    cursor: pointer;
+}
+.ContenedorButton button:hover{
+    box-shadow:0px 0px 20px #e1cda1;
+    background-color:#ffcb33;
+    color: #000;
+}
+[section3]{
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+[section3] div{
+    background-color: #fdf7eb;
+    width: 400px;
+    height: 500px;
+    margin: 30px;
+    border-radius: 10px;        
+    transition: box-shadow .5s;
+    padding: 15px 40px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+[section3] div:hover{
+    box-shadow: #ddd 0 0 30px;
+}
+[section3] h2{
+    text-align: center;
+    line-height: 100px;
+    font-size: 45px;
+    align-self: flex-start;
+    width: 100%;
+}
+[section3] div img{
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+[section3] div h3{
+    padding-top: 3px;
+    padding-bottom: 4px;
+    margin-bottom: 10px; 
+}
+[section3] div p {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.ContenedorOpciones{
+    display: flex;
+    flex-wrap:wrap;
+    background-color: #fdf7eb;
+    justify-content: center;
+    padding: 100px;
+}
+.ContenedorOpciones div { 
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 1s, background-color 1s;
+    transition-timing-function:all ease;
+}
+.ContenedorOpciones div:hover{
+    box-shadow: #ddd 0 0 30px;
+    background-color: #fff;
+}
+.ContenedorOpciones div h3{
+    padding-bottom: 20px;
+    color: #aaa;
+}
+.ContenedorOpciones div i{
+    font-size: 200px;
+    color: #aaa;      
+}
