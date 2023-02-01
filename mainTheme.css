@@ -166,3 +166,32 @@ header{
     font-size: 200px;
     color: #aaa;      
 }
+#PlatziEscucharEventos{
+    width: 350px;
+    height: 150px;
+    background-color: #c66;
+    margin: 30px auto;
+    padding: 20px;
+}
+#PlatziEscucharEventos .tittle{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+#result{
+    width: 250px;
+    height: 15px;
+    background-color: #ddd;
+    margin: 7px;
+}
+.form {
+    width: 350px;
+    height: 150px;
+    background-color: #4b5;
+    margin: 30px auto;
+    padding: 20px;
+}
+.form .formTittle{
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
