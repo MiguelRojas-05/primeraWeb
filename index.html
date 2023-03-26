@@ -30,7 +30,7 @@
           <h1 class="titulo">Título principal junto a la imagen y centrado</h1>
     </div>
     <div class="videoSection">
-      <video src="GenteBailando.mp4" autoplay="true" muted="true" loop="true"></video>
+      <video src="" autoplay="true" muted="true" loop="true"></video>
       <h2>Subtítulo con Video de fondo</h2>
     </div>
     <div section3="section3Planes">
@@ -98,10 +98,45 @@
 
     <form class="form">
       <div class="formTittle">Formulario - Manipulación del DOM</div>
-      <input id="formInput1" placeholder="Escribe algo aquí">
-      <input id="formInput2" placeholder="Escribe algo aquí">
+      <input id="formInput1" placeholder="Escribe un nombre">
+      <input type="email" id="formInput2" placeholder="Escribe un e-mail aquí">
       <button id="btnForm">Calcular</button>
       <p id="resultForm"></p>
+    </form>
+
+    <form class="formDiscount">
+      <h3>Calculando descuentos Parte 1</h3>
+
+     <div class="primerLabel">
+      <label for="price">Precio original</label>
+      <input id="price" type="number" placeholder="Ingrese precio original">
+     </div>
+
+      <div class="segundoLabel">
+      <label for="discount">Precio con descuento</label>
+      <input id="discount" type="number" placeholder="Ingrese descuento que desea hacer">
+      </div>
+
+      <button id="calcular">Enter</button>
+
+      <p id="resultDiscount"></p>
+
+    </form>
+
+    <form id="formCuponDescuento">
+      <div class="formDescuentoT">DESCUENTOS CUPONES</div>
+      <div>
+        <label for="priceOrigen">Precio original</label>
+        <input id="priceOrigen" type="number">
+      </div>
+      <div>
+        <label for="cuponDescuento">Ingrese código de cupón</label>
+        <input id="cuponDescuento" type="text">
+      </div>
+      <div class="ContenedorButtonCupones">
+        <button id="botonCupones">Calcular</button>
+      </div>
+      <p class="parrafoResultado"></p>
     </form>
 <script src="./codigo.js"></script>
   </body>
