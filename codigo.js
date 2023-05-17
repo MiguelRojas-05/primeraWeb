@@ -39,6 +39,7 @@ function sumarInputsValues(e){
 }
 
 //Calculando descuentos
+
 const inputPrice = document.querySelector('#price');
 const inputDiscount = document.querySelector('#discount');
 const btnCalcularDiscount = document.querySelector('#calcular');
@@ -74,13 +75,15 @@ function calcularPrecioDescuento(e){
 
 
 const botonCalcularCupon = document.querySelector('#botonCupones');
-const INPUTpriceOrigen = document.querySelector('#priceOrigen');
+const priceOrigen = document.querySelector('#priceOrigen');
 const cuponDescuento = document.querySelector('#cuponDescuento');
 const parrafoResultado = document.querySelector('.parrafoResultado')
-const priceOrigen = Number(INPUTpriceOrigen.value);
+
 
 //Creamos lista de cupones disponible, con sus respectivos descuentos
 const listaCupones = [];
+
+//Agregamos cada cupón deseado al array
 listaCupones.push({
     name:'123',
     descuento:40
@@ -97,24 +100,16 @@ listaCupones.push({
 });
 
 
-//const codigoCuponDisponible = "platzi123";
+
 
 
 //Creamos función para calcular el respectivo cupon por cada descuento
 botonCalcularCupon.addEventListener("click",descuentoCupon);
 
 
-botonCalcularCupon.addEventListener("mouseover", moverCondicionalBoton);
 
-function moverCondicionalBoton(){
-    
-     
-    
-    if(!priceOrigen || !cuponDescuento){
-    
-        botonCalcularCupon.classList.toggle('move1');
-    }   
-}
+
+
 
 function descuentoCupon (e){
 
@@ -123,15 +118,12 @@ function descuentoCupon (e){
             
 
         if(!priceOrigen || !cuponDescuento){
-       //     parrafoResultado.innerText = 'Por favor llena el formulario';    
+            
+            parrafoResultado.innerText = 'Por favor llena el formulario';    
     
-        // return;
-
-        
-
-        
-
-        }
+         return;
+        } 
+    
 
         let descuento;
 
@@ -151,7 +143,7 @@ function descuentoCupon (e){
 
             descuento = siCuponLista.descuento;
 
-            const nuevoPrecio = (priceOrigen *(100-descuento))/100;
+            const nuevoPrecio = (priceOrigen.value *(100-descuento))/100;
             parrafoResultado.innerText = "El nuevo precio es $"+nuevoPrecio;
             return;
         }
@@ -161,4 +153,39 @@ function descuentoCupon (e){
 
     }
 
+//      AHORA TRABAJAREMOS CON PROMEDIOS
 
+            //CON EL MÉTODO DE CICLOS FOR
+
+    function calcularPromedio(lista){
+        //Sumar todos los valores de los elementos del array / cantidad de elementos
+        let sumaLista = 0;
+        
+        for (let i = 0; i < lista.length; i++) {
+            sumaLista = sumaLista + lista[i];
+         }
+         const promedio = sumaLista / lista.length;
+            console.log(sumaLista);
+            console.log(lista.length);
+
+            return promedio;
+    }
+
+                // CON EL MÉTODO REDUCE
+
+        function calcularPromedio(lista){
+        //Sumar todos los valores de los elementos del array / cantidad de elementos
+        
+            function sumarTodosElementos(valorAcumulado, nuevoValor){
+                return valorAcumulado + nuevoValor;
+            }
+
+        const sumaLista = lista.reduce(sumarTodosElementos);
+
+
+         const promedio = sumaLista / lista.length;
+            console.log(sumaLista);
+            console.log(lista.length);
+
+            return promedio;
+    }

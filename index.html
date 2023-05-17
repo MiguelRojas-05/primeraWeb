@@ -30,7 +30,10 @@
           <h1 class="titulo">Título principal junto a la imagen y centrado</h1>
     </div>
     <div class="videoSection">
-      <video src="" autoplay="true" muted="true" loop="true"></video>
+      <video autoplay="" playsinline="" muted="" loop="">
+        <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v" type="video/mp4">
+      </video>
+      <!--<video src="https://youtu.be/bo9Z_pgByQY" autoplay="true" muted="true" loop="true"></video>-->
       <h2>Subtítulo con Video de fondo</h2>
     </div>
     <div section3="section3Planes">
@@ -127,17 +130,22 @@
       <div class="formDescuentoT">DESCUENTOS CUPONES</div>
       <div>
         <label for="priceOrigen">Precio original</label>
-        <input id="priceOrigen" type="number">
+        <input id="priceOrigen" type="text">
       </div>
       <div>
         <label for="cuponDescuento">Ingrese código de cupón</label>
         <input id="cuponDescuento" type="text">
       </div>
-      <div class="ContenedorButtonCupones">
+     
         <button id="botonCupones">Calcular</button>
-      </div>
+
       <p class="parrafoResultado"></p>
     </form>
+
+    <section id="Promedios">
+      
+    </section>
+
 <script src="./codigo.js"></script>
   </body>
 </html>
