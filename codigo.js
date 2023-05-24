@@ -173,7 +173,7 @@ function descuentoCupon (e){
 
                 // CON EL MÉTODO REDUCE
 
-        function calcularPromedio(lista){
+        /*function calcularPromedio(lista){
         //Sumar todos los valores de los elementos del array / cantidad de elementos
         
             function sumarTodosElementos(valorAcumulado, nuevoValor){
@@ -188,4 +188,29 @@ function descuentoCupon (e){
             console.log(lista.length);
 
             return promedio;
+    }*/
+
+function CalcularMediana(conjuntoI){
+
+ const conjuntoF = conjuntoI.sort((a,b)=>a-b); /* El método SORT ordena un array, pero lo hace en string
+  por eso debemos poner una funcion que reste los dos terminos que tome para hacer la comparación y pedirle que lo reste
+  POR DEFECTO LO ORDENARÁ DE MENOR A MAYOR */ 
+ 
+ console.log(conjuntoF);
+
+    if(conjuntoF.length%2===0){
+        const primerIndexListaPar = conjuntoF[(conjuntoF.length/2)-1];
+        const segundoIndexListaPar = conjuntoF[conjuntoF.length/2];
+        const medianaListaPar = calcularPromedio([primerIndexListaPar,segundoIndexListaPar]);
+        return medianaListaPar;
+        
+    }else{
+        const indexMitadListaImpar = Math.round((conjuntoF.length/2));//Math.round   --> Obtiene el siguiente numero mas cercano( si es >.5 redondea hacia arriba, si es <.5 redonda hacia abajo)
+        const medianaListaImpar = conjuntoF[indexMitadListaImpar-1];
+        return medianaListaImpar;
     }
+
+}
+
+    
+
