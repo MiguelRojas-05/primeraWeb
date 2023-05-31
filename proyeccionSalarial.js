@@ -30,4 +30,43 @@ function proyeccionPorPersona(nombrePersona){
     const medianaPorcentajesCrecimiento = Platzimath.CalcularMediana(porcentajesCrecimiento);
 
     console.log({porcentajesCrecimiento,medianaPorcentajesCrecimiento});
+
+    const ultimoSalario = trabajos[trabajos.length-1].salario;
+    const aumento = ultimoSalario * medianaPorcentajesCrecimiento;
+    const nuevoSalario = ultimoSalario + aumento;
+
+    return nuevoSalario;
+}
+
+const empresas = {};
+
+for (persona of salarios){
+    for(trabajo of persona.trabajos){
+        if(!empresas[trabajo.empresa]){//verificamos la existencia de esta propiedad en el objeto empresas
+            empresas[trabajo.empresa] = {};//de lo contrario lo agregamos asignandole un objeto vacío
+        }
+        if(!empresas[trabajo.empresa][trabajo.year]){//verificamos la existencia de estas propiedad en el objeto empresas
+            empresas[trabajo.empresa][trabajo.year] = [];//de lo contrario lo agregamos asignandole un array vacío
+        }
+        empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
+    }
+}
+
+console.log({empresas});
+
+
+//FUNCION PARA CALCULAR LA MEDIANA DE UNA EMPRESA EN UN AÑO EN ESPECIFICO
+
+
+
+const añoBuscar = "2018";
+function medianaDeEmpresa (eBuscar){
+    for(cadaEmpresa in empresas){
+        if(cadaEmpresa == eBuscar){
+            for(año in cadaEmpresa){
+                console.log(año[7]);
+                
+            }
+        }
+    }
 }
