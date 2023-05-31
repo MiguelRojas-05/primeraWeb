@@ -59,14 +59,13 @@ console.log({empresas});
 
 
 
-const añoBuscar = "2018";
-function medianaDeEmpresa (eBuscar){
-    for(cadaEmpresa in empresas){
-        if(cadaEmpresa == eBuscar){
-            for(año in cadaEmpresa){
-                console.log(año[7]);
-                
-            }
-        }
+
+function medianaDeEmpresaYear (nombre, year){
+    if(!empresas[nombre]){
+        console.warn('La empresa no existe');
+    }else if(!empresas[nombre][year]){
+        console.warn('La empresa no dio salarios ese año');
+    }else{
+        return Platzimath.CalcularMediana(empresas[nombre][year]);
     }
 }

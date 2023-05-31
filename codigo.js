@@ -209,7 +209,7 @@ function descuentoCupon (e){
     if(conjuntoF.length%2===0){
         const primerIndexListaPar = conjuntoF[(conjuntoF.length/2)-1];
         const segundoIndexListaPar = conjuntoF[conjuntoF.length/2];
-        const medianaListaPar = calcularPromedio([primerIndexListaPar,segundoIndexListaPar]);
+        const medianaListaPar = Platzimath.calcularPromedio([primerIndexListaPar,segundoIndexListaPar]);
         return medianaListaPar;
         
     }else{
