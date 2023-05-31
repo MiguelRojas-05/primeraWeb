@@ -75,8 +75,8 @@ function calcularPrecioDescuento(e){
 
 
 const botonCalcularCupon = document.querySelector('#botonCupones');
-const priceOrigen = document.querySelector('#priceOrigen');
-const cuponDescuento = document.querySelector('#cuponDescuento');
+const precioOrigen = document.querySelector('#priceOrigen');
+const cuponDiscount = document.querySelector('#cuponDescuento');
 const parrafoResultado = document.querySelector('.parrafoResultado')
 
 
@@ -110,22 +110,16 @@ botonCalcularCupon.addEventListener("click",descuentoCupon);
 
 
 
-
 function descuentoCupon (e){
 
         e.preventDefault();
-
-            
-
-        if(!priceOrigen || !cuponDescuento){
+    
+        if(!precioOrigen.value || !cuponDiscount.value){
             
             parrafoResultado.innerText = 'Por favor llena el formulario';    
-    
          return;
-        } 
-    
+        }
 
-        let descuento;
 
 
 //Creamos una función para verificar que coincida lo que escriben los usuarios con lo que tenemos en la lista de cupones
@@ -138,18 +132,20 @@ function descuentoCupon (e){
 //Buscamos en la lista de elementos el cupón que coincida con name, y dicho elemento que lo contenga será el devuelto
         const siCuponLista = listaCupones.find(esCuponDeLista);   
 
+        
+            if(siCuponLista){
 
-        if(siCuponLista){
-
-            descuento = siCuponLista.descuento;
-
-            const nuevoPrecio = (priceOrigen.value *(100-descuento))/100;
-            parrafoResultado.innerText = "El nuevo precio es $"+nuevoPrecio;
-            return;
-        }
-        else{
-            parrafoResultado.innerText = "Código no válido";            
-        }
+                let Descuento = siCuponLista.descuento;
+    
+                const nuevoPrecio = (priceOrigen.value *(100-Descuento))/100;
+                parrafoResultado.innerText = "El nuevo precio es $"+nuevoPrecio;
+                return;
+            }
+            else{
+                parrafoResultado.innerText = "Código no válido";            
+            }
+        
+        
 
     }
 
@@ -157,7 +153,18 @@ function descuentoCupon (e){
 
             //CON EL MÉTODO DE CICLOS FOR
 
-    function calcularPromedio(lista){
+
+
+
+
+
+
+
+
+            const Platzimath = {};
+
+
+    Platzimath.calcularPromedio = function calcularPromedio(lista){
         //Sumar todos los valores de los elementos del array / cantidad de elementos
         let sumaLista = 0;
         
@@ -190,7 +197,8 @@ function descuentoCupon (e){
             return promedio;
     }*/
 
-function CalcularMediana(conjuntoI){
+
+    Platzimath.CalcularMediana = function CalcularMediana(conjuntoI){
 
  const conjuntoF = conjuntoI.sort((a,b)=>a-b); /* El método SORT ordena un array, pero lo hace en string
   por eso debemos poner una funcion que reste los dos terminos que tome para hacer la comparación y pedirle que lo reste
@@ -212,5 +220,44 @@ function CalcularMediana(conjuntoI){
 
 }
 
+    Platzimath.calcularModa = function calcularModa(group){
+    const listaCount = {
+
+    };
+    for(let i = 0;i < group.length;i++){
+        const elemento = group[i];
+
+        if(listaCount[elemento]){
+            listaCount[elemento]+= 1;
+        }else{
+            listaCount[elemento] = 1;
+        }
+    }
+
+    console.log(listaCount);
+
+    const listaArray = Object.entries(listaCount);
+    const listaOrdenada = ordenarListaBidimensional(listaArray);
+    const MaxNumberListaOrdenada = listaOrdenada[listaOrdenada.length-1];
+    const moda =  MaxNumberListaOrdenada[0];
+    return moda;
+}
+
+//PARA PODER HALLAR LA MODA, DEBEMOS CREAR UNA FUNCION QUE ORDENE LA LISTA BIDIMENSIONAL QUE SE CREARÁ 
+// AL MOMENTO DE PASARLE LA LISTA DE ELEMENTOS 
+
+    Platzimath.ordenarListaBidimensional = function ordenarListaBidimensional (listaPorOrdenar){
+    function ordenarListaSort(valorAcumulado,nuevoValor){
+        return valorAcumulado[1] - nuevoValor[1];
+    }
+    const list = listaPorOrdenar.sort(ordenarListaSort);
+    return list;
+}
     
+
+
+//PONDREMOS TODAS LAS FUNCIONES DENTRO DE UN OBJETO PARA FACILITAR SU ACCESIBILIDAD
+
+
+
 
