@@ -77,7 +77,7 @@ function calcularPrecioDescuento(e){
 const botonCalcularCupon = document.querySelector('#botonCupones');
 const precioOrigen = document.querySelector('#priceOrigen');
 const cuponDiscount = document.querySelector('#cuponDescuento');
-const parrafoResultado = document.querySelector('.parrafoResultado')
+const parrafoResultado = document.querySelector('.parrafoResultado');
 
 
 //Creamos lista de cupones disponible, con sus respectivos descuentos
@@ -126,7 +126,7 @@ function descuentoCupon (e){
 //Para hacerlo creamos una variable temporal "elementoCupon", y verificamos con el name de cada objeto del arreglo
 
         function esCuponDeLista(elementoCupon){
-            return elementoCupon.name ==   cuponDescuento.value;
+            return elementoCupon.name ==   cuponDiscount.value;
         }
 
 //Buscamos en la lista de elementos el cupón que coincida con name, y dicho elemento que lo contenga será el devuelto
@@ -144,8 +144,6 @@ function descuentoCupon (e){
             else{
                 parrafoResultado.innerText = "Código no válido";            
             }
-        
-        
 
     }
 
@@ -153,12 +151,42 @@ function descuentoCupon (e){
 
             //CON EL MÉTODO DE CICLOS FOR
 
+const numerosEnBruto = document.querySelector('#ingresoValoresNumber');
+const resultadoPromedioP = document.querySelector('.resultadoPromedio');
+const resultadoMedianaP = document.querySelector('.resultadoMediana');
+const resultadoModaP = document.querySelector('.resultadoModa');
+const btnCalculosMat = document.querySelector('#btnCalculosMat');
 
 
 
+btnCalculosMat.addEventListener("click", ponerResultadosEnPantalla);
 
+function ponerResultadosEnPantalla (elemento){
+    elemento.preventDefault();
+   
+    function convertirTextNumber(ulala){
+       const listaString = ulala.split(",") ;
+       const listaNumberBruto = listaString.map((e)=>{
+           return parseInt(e);
+       })
+       const listaNumber = listaNumberBruto.filter((value) => !isNaN(value));
+       return listaNumber;
+   }
+   const arrayFinalDeNumeros = convertirTextNumber(numerosEnBruto.value);
+       
+       if(arrayFinalDeNumeros){
+           const promedioIS = Platzimath.calcularPromedio(arrayFinalDeNumeros);
+           const medianaIS = Platzimath.CalcularMediana(arrayFinalDeNumeros);
+           const modaIS = Platzimath.calcularModa(arrayFinalDeNumeros);
+           const emoji = '\u{1F449}'
+           resultadoPromedioP.innerText =emoji+ promedioIS;
+           resultadoMedianaP.innerText = emoji+ medianaIS;
+           resultadoModaP.innerText=emoji+ modaIS;
+           return;
+       }
+       
 
-
+}
 
 
             const Platzimath = {};
@@ -172,9 +200,6 @@ function descuentoCupon (e){
             sumaLista = sumaLista + lista[i];
          }
          const promedio = sumaLista / lista.length;
-            console.log(sumaLista);
-            console.log(lista.length);
-
             return promedio;
     }
 
@@ -204,7 +229,6 @@ function descuentoCupon (e){
   por eso debemos poner una funcion que reste los dos terminos que tome para hacer la comparación y pedirle que lo reste
   POR DEFECTO LO ORDENARÁ DE MENOR A MAYOR */ 
  
- console.log(conjuntoF);
 
     if(conjuntoF.length%2===0){
         const primerIndexListaPar = conjuntoF[(conjuntoF.length/2)-1];
@@ -221,9 +245,9 @@ function descuentoCupon (e){
 }
 
     Platzimath.calcularModa = function calcularModa(group){
-    const listaCount = {
+        
+    const listaCount = {};
 
-    };
     for(let i = 0;i < group.length;i++){
         const elemento = group[i];
 
@@ -234,13 +258,21 @@ function descuentoCupon (e){
         }
     }
 
-    console.log(listaCount);
 
     const listaArray = Object.entries(listaCount);
-    const listaOrdenada = ordenarListaBidimensional(listaArray);
-    const MaxNumberListaOrdenada = listaOrdenada[listaOrdenada.length-1];
-    const moda =  MaxNumberListaOrdenada[0];
+    const listaOrdenada =Platzimath.ordenarListaBidimensional(listaArray);
+    const ultimateNumberListaOrdenada = listaOrdenada[listaOrdenada.length-1];
+    const penultimateNumberListaOrdenada = listaOrdenada[listaOrdenada.length-2]
+    
+    if(ultimateNumberListaOrdenada == penultimateNumberListaOrdenada){
+    
+    const moda = penultimateNumberListaOrdenada[0];   
     return moda;
+    }else{
+        const noModa = "No existe moda";
+        return noModa;
+    }
+    
 }
 
 //PARA PODER HALLAR LA MODA, DEBEMOS CREAR UNA FUNCION QUE ORDENE LA LISTA BIDIMENSIONAL QUE SE CREARÁ 
