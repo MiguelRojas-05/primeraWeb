@@ -29,7 +29,7 @@ function proyeccionPorPersona(nombrePersona){
 
     const medianaPorcentajesCrecimiento = Platzimath.CalcularMediana(porcentajesCrecimiento);
 
-    console.log({porcentajesCrecimiento,medianaPorcentajesCrecimiento});
+    //console.log({porcentajesCrecimiento,medianaPorcentajesCrecimiento});
 
     const ultimoSalario = trabajos[trabajos.length-1].salario;
     const aumento = ultimoSalario * medianaPorcentajesCrecimiento;
@@ -67,5 +67,34 @@ function medianaDeEmpresaYear (nombre, year){
         console.warn('La empresa no dio salarios ese año');
     }else{
         return Platzimath.CalcularMediana(empresas[nombre][year]);
+    }
+}
+
+
+function proyeccionPorEmpresa(nombre){
+    if(!empresas[nombre]){
+        console.warn("La empresa no existe");
+    }else{
+    //Esto nos dará la lista de todos los años, es decir la llave
+    const empresaYears = Object.keys(empresas[nombre]);
+    const listaMedianaYears = empresaYears.map((year)=>{ //Aca tendremos una lista de arrays 
+        return medianaDeEmpresaYear(nombre,year);// que tiene cada año con su mediana de salariosAnual
+    });
+    let porcentajesCrecimientoII = [];
+
+    for (let i = 1; i < listaMedianaYears.length; i++) {
+        const medianaActual = listaMedianaYears[i];
+        const medianaPasado = listaMedianaYears[i-1];
+        const porcentajeCrecimiento = (medianaActual - medianaPasado)/medianaPasado;
+        porcentajesCrecimientoII.push(porcentajeCrecimiento);
+    }
+
+    const medianaPorcentajesCrecimiento = Platzimath.CalcularMediana(porcentajesCrecimientoII);
+
+    const ultimoMediana = listaMedianaYears[listaMedianaYears.length-1];
+    const aumento = ultimoMediana * medianaPorcentajesCrecimiento;
+    const nuevoMediana = ultimoMediana + aumento;
+
+    return nuevoMediana;
     }
 }

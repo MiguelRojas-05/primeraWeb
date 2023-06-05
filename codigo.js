@@ -104,6 +104,7 @@ listaCupones.push({
 
 
 //Creamos función para calcular el respectivo cupon por cada descuento
+
 botonCalcularCupon.addEventListener("click",descuentoCupon);
 
 
