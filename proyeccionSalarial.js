@@ -109,6 +109,32 @@ function proyeccionPorEmpresa(nombre){
 //ANÁLISIS GENERAL:
 
 function medianaGeneral(){
+    const listaMedianas = salarios.map(persona => medianaPorPersona(persona.name));
 
+    const mediana = Platzimath.CalcularMediana(listaMedianas);
+
+    return mediana;
 }
 
+
+function medianaTop10(){
+    const listaMedianas = salarios.map(persona => medianaPorPersona(persona.name));
+    
+    const medianasOrdenadas = listaMedianas.sort((a,b)=>a-b);
+
+    const cantidadMedianas = listaMedianas.length/10;
+    const limite = listaMedianas.length - cantidadMedianas;
+
+    //Método SLICE
+    //Clona desde el límite inferior hasta el límite superior de atras hacia adelante,
+    // y lo pone en un array
+    const top10 = medianasOrdenadas.slice(limite,medianasOrdenadas.length);
+
+    //Método SPLICE
+    //Corta desde el límite inferior hasta el límite superior de atras hacia adelante,
+    // y lo pone en un array>>>>>>Eso lo diferencia de SLICE
+
+    //Ahora finalizamos con:
+    const medianaTop10 = Platzimath.CalcularMediana(top10);
+    return medianaTop10;
+}
