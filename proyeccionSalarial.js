@@ -12,9 +12,12 @@ const trabajos = encontrarPersona(nombrePersona).trabajos;
 
 const salarios = trabajos.map(function(e){
 return e.salario;
-});
-console.log(salarios);
+})
+const medianaPersona = Platzimath.CalcularMediana(salarios);
+return medianaPersona;
 }
+
+
 function proyeccionPorPersona(nombrePersona){
     const trabajos = encontrarPersona(nombrePersona).trabajos;
 
@@ -71,6 +74,9 @@ function medianaDeEmpresaYear (nombre, year){
 }
 
 
+//PROYECCIÓN DE CUALQUIER EMPRESA A PARTIR DE SUS MEDIANAS
+
+
 function proyeccionPorEmpresa(nombre){
     if(!empresas[nombre]){
         console.warn("La empresa no existe");
@@ -98,3 +104,11 @@ function proyeccionPorEmpresa(nombre){
     return nuevoMediana;
     }
 }
+
+
+//ANÁLISIS GENERAL:
+
+function medianaGeneral(){
+
+}
+
